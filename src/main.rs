@@ -1,34 +1,7 @@
-#[derive(Debug)]
-enum Media {
-    Book { title: String, author: String },
-    Movie { title: String, director: String },
-    AudioBook { title: String }
-}
+mod content;
 
-#[derive(Debug)]
-struct Catalog {
-    items: Vec<Media>
-}
-
-impl Catalog {
-    fn new() -> Self {
-        return Catalog {
-            items: vec![]
-        };
-    }
-
-    fn add(&mut self, media: Media) {
-        self.items.push(media);
-    }
-
-    fn get(&self, idx: usize) -> Option<&Media> {
-        if idx < self.items.len() {
-            return Some(&self.items[idx]);
-        } else {
-            return None;
-        }
-    }
-}
+use content::media::Media;
+use content::catalog::Catalog;
 
 fn main() {
     let movie = Media::Movie { title: String::from("Movie"), director: String::from("Director") };
